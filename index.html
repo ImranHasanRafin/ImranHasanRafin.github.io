@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Md. Imran Hasan Rafin | Strategic Communication, Multimedia Journalism & Civic Advocacy</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Playfair Display (Editorial Serif), Plus Jakarta Sans (Modern Geometric Sans), JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            obsidian: '#0b0f19',
+            slateCard: '#111827',
+            ivory: '#faf8f5',
+            paper: '#f3efe6',
+            amberAccent: '#f59e0b',
+            crimsonAccent: '#c2410c',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Theme Variables & Utilities */
+    :root {
+      --bg-primary: #faf8f5;
+      --bg-secondary: #f3efe6;
+      --bg-card: #ffffff;
+      --text-primary: #111827;
+      --text-secondary: #4b5563;
+      --accent-primary: #c2410c;
+      --accent-secondary: #d97706;
+      --border-color: rgba(17, 24, 39, 0.12);
+    }
+
+    html.dark {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #111827;
+      --bg-card: #151e30;
+      --text-primary: #f9fafb;
+      --text-secondary: #9ca3af;
+      --accent-primary: #f59e0b;
+      --accent-secondary: #fbbf24;
+      --border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.35s ease, color 0.35s ease;
+      overflow-x: hidden;
+    }
+
+    .theme-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .theme-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.35);
+    }
+
+    .glass-nav {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    /* Subtle film grain & ambient glow */
+    .hero-glow {
+      background: radial-gradient(circle at 75% 25%, rgba(245, 158, 11, 0.16), transparent 55%),
+                  radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1), transparent 50%);
+    }
+
+    html:not(.dark) .hero-glow {
+      background: radial-gradient(circle at 75% 25%, rgba(194, 65, 12, 0.10), transparent 55%),
+                  radial-gradient(circle at 20% 80%, rgba(217, 119, 6, 0.08), transparent 50%);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #4b5563;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-primary);
+    }
+
+    /* Print Styles for Executive CV Modal */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #cv-print-area, #cv-print-area * {
+        visibility: visible;
+      }
+      #cv-print-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: white !important;
+        color: black !important;
+        padding: 20px !important;
+      }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-amber-500 selection:text-slate-950">
+
+  <!-- Hidden Multi-File Input for Live Preview Photo Sync -->
+  <input type="file" id="batch-photo-input" multiple accept="image/*" class="hidden" />
+  <!-- Hidden Single-File Input for Specific Slot Sync -->
+  <input type="file" id="single-photo-input" accept="image/*" class="hidden" />
+
+  <!-- Top Live-Preview Photo Sync Banner (Dismissible, helps test local photos in preview) -->
+  <div id="photo-sync-banner" class="bg-gradient-to-r from-amber-600/95 via-amber-500/95 to-orange-600/95 text-slate-950 px-4 py-2.5 text-xs sm:text-sm font-medium relative z-50 shadow-md">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2.5">
+        <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-slate-950 text-amber-400 font-bold text-xs shrink-0">
+          <i class="fa-solid fa-camera-retro"></i>
+        </span>
+        <span>
+          <strong>Live Preview Photo Loader:</strong> Your 6 filenames (<code class="font-mono bg-black/15 px-1.5 py-0.5 rounded">IMG_E5314.jpg</code>, etc.) are pre-linked for GitHub/Netlify hosting. Select your 6 photos once to see them live right now!
+        </span>
+      </div>
+      <div class="flex items-center gap-2 ml-auto">
+        <button onclick="triggerBatchPhotoLoad()" class="px-3 py-1 rounded-lg bg-slate-950 text-amber-400 hover:bg-slate-800 font-semibold transition flex items-center gap-1.5 shadow-sm">
+          <i class="fa-solid fa-folder-open"></i> Load 6 Photos Now
+        </button>
+        <span id="photo-load-status" class="hidden text-xs font-bold bg-emerald-950 text-emerald-300 px-2.5 py-1 rounded-lg">
+          0/6 Loaded
+        </span>
+        <button onclick="document.getElementById('photo-sync-banner').classList.add('hidden')" class="p-1 hover:bg-black/10 rounded-lg transition" title="Hide Banner">
+          <i class="fa-solid fa-xmark text-base"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Navigation Bar -->
+  <header class="sticky top-0 z-40 glass-nav bg-ivory/85 dark:bg-obsidian/85 border-b border-slate-900/10 dark:border-white/10 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      <!-- Brand / Identity -->
+      <a href="#top" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-slate-950 font-serif font-extrabold text-xl shadow-lg shadow-amber-500/20 group-hover:scale-105 transition">
+          IR
+        </div>
+        <div>
+          <span class="font-serif font-bold text-lg sm:text-xl tracking-tight block leading-none">Md. Imran Hasan Rafin</span>
+          <span class="text-xs text-slate-600 dark:text-slate-400 font-mono block mt-1">MCJ • University of Dhaka</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-1 xl:gap-2 text-sm font-medium">
+        <a href="#about" class="px-3 py-2 rounded-lg hover:bg-slate-900/5 dark:hover:bg-white/5 transition">About</a>
+        <a href="#projects" class="px-3 py-2 rounded-lg hover:bg-slate-900/5 dark:hover:bg-white/5 transition">Action Projects</a>
+        <a href="#experience" class="px-3 py-2 rounded-lg hover:bg-slate-900/5 dark:hover:bg-white/5 transition">Experience</a>
+        <a href="#gallery" class="px-3 py-2 rounded-lg hover:bg-slate-900/5 dark:hover:bg-white/5 transition">Photo Gallery</a>
+        <a href="#skills" class="px-3 py-2 rounded-lg hover:bg-slate-900/5 dark:hover:bg-white/5 transition">Skills & Academia</a>
+        <a href="#certifications" class="px-3 py-2 rounded-lg hover:bg-slate-900/5 dark:hover:bg-white/5 transition">Credentials</a>
+        <a href="#endorsements" class="px-3 py-2 rounded-lg hover:bg-slate-900/5 dark:hover:bg-white/5 transition">Endorsements</a>
+      </nav>
+
+      <!-- Action Controls: Photo Sync, Theme Switcher, CV Modal, Mobile Menu -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Quick Photo Load Button -->
+        <button onclick="triggerBatchPhotoLoad()" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold border border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-300 hover:bg-amber-500/20 transition" title="Load your 6 local photos into the live preview">
+          <i class="fa-solid fa-images"></i>
+          <span id="nav-photo-counter">Sync Photos</span>
+        </button>
+
+        <!-- Dual Theme Toggle: Cinematic Dark vs Editorial Light -->
+        <button id="theme-toggle" onclick="toggleTheme()" class="p-2.5 rounded-xl border border-slate-900/15 dark:border-white/15 hover:border-amber-500 dark:hover:border-amber-400 transition flex items-center gap-2 text-xs font-semibold" title="Switch between Cinematic Dark & Editorial Light">
+          <i id="theme-icon" class="fa-solid fa-sun text-amber-400 text-sm"></i>
+          <span id="theme-label" class="hidden md:inline">Cinematic Dark</span>
+        </button>
+
+        <!-- Executive CV Button -->
+        <button onclick="openCvModal()" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 font-semibold text-xs sm:text-sm hover:opacity-90 transition shadow-md">
+          <i class="fa-solid fa-file-lines"></i>
+          <span>Europass CV</span>
+        </button>
+
+        <!-- Mobile Hamburger Button -->
+        <button onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl border border-slate-900/15 dark:border-white/15">
+          <i id="mobile-menu-icon" class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-900/10 dark:border-white/10 bg-ivory dark:bg-obsidian px-4 pt-3 pb-6 space-y-2">
+      <div class="grid grid-cols-2 gap-2 text-sm font-medium">
+        <a href="#about" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-lg bg-slate-900/5 dark:bg-white/5">About & Bio</a>
+        <a href="#projects" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-lg bg-slate-900/5 dark:bg-white/5">Action Projects</a>
+        <a href="#experience" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-lg bg-slate-900/5 dark:bg-white/5">Experience</a>
+        <a href="#gallery" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-lg bg-slate-900/5 dark:bg-white/5">Photo Gallery (6)</a>
+        <a href="#skills" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-lg bg-slate-900/5 dark:bg-white/5">Skills & Education</a>
+        <a href="#certifications" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-lg bg-slate-900/5 dark:bg-white/5">13+ Credentials</a>
+        <a href="#endorsements" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-lg bg-slate-900/5 dark:bg-white/5">Recommendations</a>
+        <a href="#contact" onclick="toggleMobileMenu()" class="px-3 py-2.5 rounded-lg bg-slate-900/5 dark:bg-white/5">Contact Hub</a>
+      </div>
+      <div class="pt-2 flex flex-wrap gap-2">
+        <button onclick="triggerBatchPhotoLoad(); toggleMobileMenu();" class="flex-1 py-2.5 px-4 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-600 dark:text-amber-300 font-semibold text-xs flex items-center justify-center gap-2">
+          <i class="fa-solid fa-camera"></i> Load 6 Local Photos
+        </button>
+        <button onclick="openCvModal(); toggleMobileMenu();" class="flex-1 py-2.5 px-4 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-2">
+          <i class="fa-solid fa-file-pdf"></i> View Europass CV
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main id="top" class="hero-glow">
+
+    <!-- ==========================================
+         1. HERO & ABOUT SECTION
+         ========================================== -->
+    <section id="about" class="relative pt-10 pb-20 lg:py-24 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+
+          <!-- Left Column: Editorial Introduction & CTAs (7 cols) -->
+          <div class="lg:col-span-7 space-y-6">
+            <!-- Status & Role Pill -->
+            <div class="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-700 dark:text-amber-300 text-xs font-mono font-medium">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>STRATEGIC COMMUNICATION • MULTIMEDIA JOURNALISM • HUMAN RIGHTS TRAINER</span>
+            </div>
+
+            <!-- Main Headline -->
+            <div class="space-y-3">
+              <p class="text-sm sm:text-base font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 font-semibold">
+                Dhaka, Bangladesh • University of Dhaka (MCJ)
+              </p>
+              <h1 class="font-serif font-bold text-4xl sm:text-5xl xl:text-6xl leading-[1.12] tracking-tight">
+                Amplifying Voices Through <span class="italic text-amber-600 dark:text-amber-400">Strategic Media</span> & Civic Action.
+              </h1>
+            </div>
+
+            <!-- Dynamic Role Ticker -->
+            <div class="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-semibold">
+              <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/10 border border-slate-900/10 dark:border-white/10 flex items-center gap-2">
+                <i class="fa-solid fa-bullhorn text-amber-500"></i> Head of PR & Comm, Genesis Foundation
+              </span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/10 border border-slate-900/10 dark:border-white/10 flex items-center gap-2">
+                <i class="fa-solid fa-scale-balanced text-amber-500"></i> Master Trainer, Applied Democracy Lab (DIHR)
+              </span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/10 border border-slate-900/10 dark:border-white/10 flex items-center gap-2">
+                <i class="fa-solid fa-trophy text-amber-500"></i> National Champion, Genvote Hackathon
+              </span>
+            </div>
+
+            <!-- Bio Description -->
+            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+              I am <strong>Md. Imran Hasan Rafin</strong>, a Bachelor of Social Sciences (BSS) graduate in <strong>Mass Communication & Journalism</strong> from the <strong>University of Dhaka</strong> (2022–2026). My work bridges investigative multimedia reporting at <em>The Daily Janakantha</em>, organizational PR leadership at <em>Genesis Foundation</em>, youth media mobilization at <em>SAVE Youth</em>, and nationwide human rights facilitation across Bangladeshi universities.
+            </p>
+
+            <!-- Primary CTA Buttons -->
+            <div class="flex flex-wrap items-center gap-3.5 pt-2">
+              <a href="#projects" class="px-6 py-3.5 rounded-xl bg-amber-600 dark:bg-amber-500 text-white dark:text-slate-950 font-bold text-sm sm:text-base hover:bg-amber-500 dark:hover:bg-amber-400 transition shadow-lg shadow-amber-500/20 flex items-center gap-2">
+                <span>Explore Featured Projects</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="#gallery" class="px-5 py-3.5 rounded-xl theme-card font-semibold text-sm sm:text-base hover:border-amber-500 transition flex items-center gap-2">
+                <i class="fa-solid fa-camera text-amber-500"></i>
+                <span>Moments & Gallery</span>
+              </a>
+              <a href="#contact" class="px-5 py-3.5 rounded-xl theme-card font-semibold text-sm sm:text-base hover:border-amber-500 transition flex items-center gap-2">
+                <i class="fa-brands fa-whatsapp text-emerald-500 text-lg"></i>
+                <span>Connect</span>
+              </a>
+            </div>
+
+            <!-- Direct Contact Strip -->
+            <div class="pt-4 border-t border-slate-900/10 dark:border-white/10 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+              <a href="mailto:imranhasanrafin@gmail.com" class="hover:text-amber-500 transition flex items-center gap-2">
+                <i class="fa-solid fa-envelope text-amber-500"></i> imranhasanrafin@gmail.com
+              </a>
+              <a href="tel:+8801715527634" class="hover:text-amber-500 transition flex items-center gap-2">
+                <i class="fa-solid fa-phone text-amber-500"></i> (+880) 1715527634
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Hero Portrait Frame (IMG_E5314.jpg) (5 cols) -->
+          <div class="lg:col-span-5">
+            <div class="relative mx-auto max-w-md lg:max-w-none">
+              <!-- Decorative Backdrop Frame -->
+              <div class="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-amber-500/30 via-orange-500/15 to-transparent blur-xl -z-10"></div>
+
+              <div class="theme-card rounded-3xl p-3 sm:p-4 shadow-2xl relative overflow-hidden group">
+                <!-- Image Container for IMG_E5314.jpg -->
+                <div class="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-slate-900">
+                  <img
+                    src="IMG_E5314.jpg"
+                    alt="Md. Imran Hasan Rafin - Outdoor Portrait"
+                    data-photo-id="IMG_E5314.jpg"
+                    onload="markPhotoLoaded('IMG_E5314.jpg')"
+                    onerror="showPhotoFallback(this, 'IMG_E5314.jpg')"
+                    class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105"
+                  />
+
+                  <!-- Interactive Fallback Overlay (Hidden automatically once IMG_E5314.jpg loads) -->
+                  <div id="fallback-IMG_E5314.jpg" class="hidden absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-amber-950/90 p-6 flex flex-col items-center justify-center text-center text-white">
+                    <div class="w-20 h-20 rounded-2xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-400 text-3xl mb-4 shadow-inner">
+                      <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-md bg-white/10 font-mono text-xs text-amber-300 mb-2">IMG_E5314.jpg</span>
+                    <h3 class="font-serif font-bold text-xl mb-1">Md. Imran Hasan Rafin</h3>
+                    <p class="text-xs text-slate-300 max-w-xs mb-5">
+                      Outdoor sunlit portrait in white-and-blue plaid shirt. Click below to load your local photo into the preview!
+                    </p>
+                    <button onclick="triggerSinglePhotoLoad('IMG_E5314.jpg')" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition flex items-center gap-2 shadow-lg">
+                      <i class="fa-solid fa-upload"></i> Select IMG_E5314.jpg (or All 6)
+                    </button>
+                  </div>
+
+                  <!-- Bottom Floating Badge Over Image -->
+                  <div class="absolute bottom-3 left-3 right-3 p-3.5 rounded-xl bg-slate-950/85 backdrop-blur-md border border-white/15 text-white flex items-center justify-between gap-3">
+                    <div>
+                      <p class="text-xs font-mono text-amber-400 uppercase tracking-wider">Portrait • University of Dhaka</p>
+                      <p class="text-sm font-bold leading-snug">Md. Imran Hasan Rafin</p>
+                    </div>
+                    <button onclick="openLightbox('IMG_E5314.jpg')" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-amber-500 hover:text-slate-950 transition flex items-center justify-center shrink-0" title="View Fullscreen">
+                      <i class="fa-solid fa-expand text-xs"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Mini Credential Footer Inside Frame -->
+                <div class="mt-3 pt-2 px-2 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono">
+                  <span><i class="fa-solid fa-graduation-cap text-amber-500 mr-1.5"></i>BSS in MCJ (EQF Level 6)</span>
+                  <span><i class="fa-solid fa-language text-amber-500 mr-1.5"></i>Bangla • English (C2)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Impact Stat Counters Row -->
+        <div class="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div class="theme-card rounded-2xl p-6 relative overflow-hidden">
+            <div class="text-amber-600 dark:text-amber-400 text-xs font-mono uppercase tracking-wider mb-1">Civic Facilitation</div>
+            <div class="font-serif font-extrabold text-3xl sm:text-4xl mb-1 flex items-baseline gap-1">
+              <span>8+</span>
+              <span class="text-sm font-sans font-semibold text-amber-500">Universities</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">HTTP Human Rights trainings facilitated across Bangladesh (ADL & DIHR)</p>
+          </div>
+
+          <div class="theme-card rounded-2xl p-6 relative overflow-hidden">
+            <div class="text-amber-600 dark:text-amber-400 text-xs font-mono uppercase tracking-wider mb-1">National Hackathon</div>
+            <div class="font-serif font-extrabold text-3xl sm:text-4xl mb-1 flex items-baseline gap-1">
+              <span>1st</span>
+              <span class="text-sm font-sans font-semibold text-emerald-500">Champion</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Genvote Hackathon Winner & Field Grant Recipient (IFES & Election Commission)</p>
+          </div>
+
+          <div class="theme-card rounded-2xl p-6 relative overflow-hidden">
+            <div class="text-amber-600 dark:text-amber-400 text-xs font-mono uppercase tracking-wider mb-1">Athletics & Leadership</div>
+            <div class="font-serif font-extrabold text-3xl sm:text-4xl mb-1 flex items-baseline gap-1">
+              <span>2025</span>
+              <span class="text-sm font-sans font-semibold text-amber-500">Champion</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">DU Inter-Department Basketball Champion Team Member & Manager (MCJ)</p>
+          </div>
+
+          <div class="theme-card rounded-2xl p-6 relative overflow-hidden">
+            <div class="text-amber-600 dark:text-amber-400 text-xs font-mono uppercase tracking-wider mb-1">Global & National Honors</div>
+            <div class="font-serif font-extrabold text-3xl sm:text-4xl mb-1 flex items-baseline gap-1">
+              <span>13+</span>
+              <span class="text-sm font-sans font-semibold text-amber-500">Credentials</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">DIHR, USAID, IFES, WFD, International IDEA, British High Commission & R Data Science</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         2. FEATURED ACTION PROJECTS & CAMPAIGNS
+         ========================================== -->
+    <section id="projects" class="py-20 border-t border-slate-900/10 dark:border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header + Filter Pills -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <span class="text-xs font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-semibold block mb-2">
+              PORTFOLIO & FIELD IMPACT
+            </span>
+            <h2 class="font-serif font-bold text-3xl sm:text-4xl tracking-tight">
+              Featured Action Projects & Campaigns
+            </h2>
+          </div>
+
+          <!-- Category Filter Buttons -->
+          <div class="flex flex-wrap gap-2" id="project-filters">
+            <button onclick="filterProjects('all')" data-filter="all" class="proj-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-amber-500 text-slate-950 transition">
+              All Projects (4)
+            </button>
+            <button onclick="filterProjects('civic')" data-filter="civic" class="proj-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold theme-card hover:border-amber-500 transition">
+              Civic & Rights
+            </button>
+            <button onclick="filterProjects('film')" data-filter="film" class="proj-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold theme-card hover:border-amber-500 transition">
+              Multimedia & Film
+            </button>
+            <button onclick="filterProjects('innovation')" data-filter="innovation" class="proj-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold theme-card hover:border-amber-500 transition">
+              Hackathons & Innovation
+            </button>
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Populated dynamically via JS from CV Data -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         3. PROFESSIONAL EXPERIENCE TIMELINE
+         ========================================== -->
+    <section id="experience" class="py-20 bg-paper/60 dark:bg-slateCard/50 border-t border-slate-900/10 dark:border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+          <!-- Left Column: Section Intro + Genesis Award Photo Spotlight (IMG_0328.jpg) (5 cols) -->
+          <div class="lg:col-span-5 space-y-6 lg:sticky lg:top-28">
+            <div>
+              <span class="text-xs font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-semibold block mb-2">
+                CAREER TRAJECTORY
+              </span>
+              <h2 class="font-serif font-bold text-3xl sm:text-4xl tracking-tight mb-4">
+                Leadership in PR, Newsrooms & Civic Labs
+              </h2>
+              <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                From reporting and anchoring news packages at <strong>The Daily Janakantha</strong> to heading PR & Communications at <strong>Genesis Foundation</strong> and facilitating human rights trainings across 8 universities with the <strong>Applied Democracy Lab</strong>.
+              </p>
+            </div>
+
+            <!-- Spotlight Card for IMG_0328.jpg (Genesis Foundation Best Lead Award) -->
+            <div class="theme-card rounded-2xl p-4 shadow-xl">
+              <div class="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-900 mb-3 group">
+                <img
+                  src="IMG_0328.jpg"
+                  alt="Md. Imran Hasan Rafin receiving Best Lead Award at Genesis Foundation"
+                  data-photo-id="IMG_0328.jpg"
+                  onload="markPhotoLoaded('IMG_0328.jpg')"
+                  onerror="showPhotoFallback(this, 'IMG_0328.jpg')"
+                  class="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                />
+                <div id="fallback-IMG_0328.jpg" class="hidden absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 p-5 flex flex-col items-center justify-center text-center text-white">
+                  <i class="fa-solid fa-award text-amber-400 text-3xl mb-2"></i>
+                  <span class="font-mono text-xs text-amber-300 mb-1">IMG_0328.jpg</span>
+                  <p class="font-bold text-sm mb-1">Best Team Lead Award — Genesis Foundation</p>
+                  <p class="text-xs text-slate-300 mb-3">Holding the "Best Lead Award 2025" crest and Certificate of Experience (Team Lead - PR & Communications).</p>
+                  <button onclick="triggerSinglePhotoLoad('IMG_0328.jpg')" class="px-3.5 py-1.5 rounded-lg bg-amber-500 text-slate-950 font-bold text-xs">
+                    <i class="fa-solid fa-upload mr-1"></i> Load Photo
+                  </button>
+                </div>
+                <button onclick="openLightbox('IMG_0328.jpg')" class="absolute top-3 right-3 w-8 h-8 rounded-lg bg-slate-950/75 text-white hover:bg-amber-500 hover:text-slate-950 transition flex items-center justify-center" title="Expand Photo">
+                  <i class="fa-solid fa-expand text-xs"></i>
+                </button>
+              </div>
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <span class="text-xs font-mono text-amber-600 dark:text-amber-400 font-semibold uppercase">Featured Recognition • Jan 2026</span>
+                  <h3 class="font-bold text-base">Best Team Lead — PR & Communications</h3>
+                  <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
+                    Honored by Genesis Foundation for professionalism, integrity, accountability, and community development leadership.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Experience Cards (7 cols) -->
+          <div class="lg:col-span-7 space-y-6 relative before:absolute before:top-4 before:bottom-4 before:left-6 before:w-0.5 before:bg-amber-500/30">
+
+            <!-- Role 1: Master Trainer -->
+            <div class="relative pl-14">
+              <div class="absolute left-3.5 top-5 w-5 h-5 rounded-full bg-amber-500 border-4 border-ivory dark:border-obsidian shadow"></div>
+              <div class="theme-card rounded-2xl p-6 sm:p-7">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-mono text-xs font-semibold">
+                    Jun 2026 – Present
+                  </span>
+                  <span class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                    <i class="fa-solid fa-location-dot mr-1 text-amber-500"></i>Bangladesh (Nationwide)
+                  </span>
+                </div>
+                <h3 class="font-serif font-bold text-xl sm:text-2xl">Master Trainer</h3>
+                <p class="text-sm font-semibold text-amber-600 dark:text-amber-400 mb-4">
+                  Applied Democracy Lab (University of Dhaka) • In Partnership with Danish Institute for Human Rights (DIHR)
+                </p>
+                <ul class="space-y-2.5 text-sm text-slate-600 dark:text-slate-300">
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-check text-amber-500 mt-1 shrink-0"></i>
+                    <span>Completed Master Training of Trainers (MTOT) on <strong>Human Rights from Theory to Practice (HTTP)</strong> organized with the Danish Institute for Human Rights, Copenhagen.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-check text-amber-500 mt-1 shrink-0"></i>
+                    <span>Facilitated <strong>8 interactive training sessions on HTTP</strong> across different universities in Bangladesh using experiential learning methodologies.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-check text-amber-500 mt-1 shrink-0"></i>
+                    <span>Completed the semester-long <strong>DFTP (Democracy from Theory to Practice)</strong> program by <strong>USAID & IFES</strong>, and the <strong>Youth Democracy Academy (YDA)</strong> on Democracy & Constitution Building by <strong>International IDEA</strong>.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Role 2: Head of PR & Communication -->
+            <div class="relative pl-14">
+              <div class="absolute left-3.5 top-5 w-5 h-5 rounded-full bg-amber-500 border-4 border-ivory dark:border-obsidian shadow"></div>
+              <div class="theme-card rounded-2xl p-6 sm:p-7">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="px-3 py-1 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-mono text-xs font-semibold">
+                    Jan 2024 – Present
+                  </span>
+                  <span class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                    <i class="fa-solid fa-location-dot mr-1 text-amber-500"></i>Dhaka, Bangladesh
+                  </span>
+                </div>
+                <h3 class="font-serif font-bold text-xl sm:text-2xl">Head of PR & Communication</h3>
+                <p class="text-sm font-semibold text-amber-600 dark:text-amber-400 mb-4">
+                  Genesis Foundation
+                </p>
+                <ul class="space-y-2.5 text-sm text-slate-600 dark:text-slate-300">
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-check text-amber-500 mt-1 shrink-0"></i>
+                    <span>Directs comprehensive <strong>Internal & External Communication</strong> strategies supporting community development, social responsibility, and humanitarian action.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-check text-amber-500 mt-1 shrink-0"></i>
+                    <span>Leads field visits, institutional report writing, video production, documentary photography, and campaign documentation.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-trophy text-amber-500 mt-1 shrink-0"></i>
+                    <span>Awarded <strong>Best Team Lead (Jan 2026)</strong> in recognition of outstanding leadership, due diligence, collaboration, and accountability.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Role 3: Team Lead of Youth Media -->
+            <div class="relative pl-14">
+              <div class="absolute left-3.5 top-5 w-5 h-5 rounded-full bg-amber-500 border-4 border-ivory dark:border-obsidian shadow"></div>
+              <div class="theme-card rounded-2xl p-6 sm:p-7">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="px-3 py-1 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-mono text-xs font-semibold">
+                    Aug 2025 – Present
+                  </span>
+                  <span class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                    <i class="fa-solid fa-location-dot mr-1 text-amber-500"></i>Dhaka, Bangladesh
+                  </span>
+                </div>
+                <h3 class="font-serif font-bold text-xl sm:text-2xl">Team Lead of Youth Media</h3>
+                <p class="text-sm font-semibold text-amber-600 dark:text-amber-400 mb-4">
+                  SAVE Youth — Students Against Violence
+                </p>
+                <ul class="space-y-2.5 text-sm text-slate-600 dark:text-slate-300">
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-check text-amber-500 mt-1 shrink-0"></i>
+                    <span><strong>National Genvote Hackathon Champion & Field Implementation Lead:</strong> Spearheaded the winning civic innovation project (<em>Ballot Panchali</em>) and managed its grant-funded community deployment.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-check text-amber-500 mt-1 shrink-0"></i>
+                    <span>Produces and presents youth civic engagement activities across social media platforms to mobilize student networks against violence.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Role 4: Multimedia Journalist -->
+            <div class="relative pl-14">
+              <div class="absolute left-3.5 top-5 w-5 h-5 rounded-full bg-slate-500 border-4 border-ivory dark:border-obsidian shadow"></div>
+              <div class="theme-card rounded-2xl p-6 sm:p-7">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="px-3 py-1 rounded-full bg-slate-500/15 text-slate-600 dark:text-slate-300 font-mono text-xs font-semibold">
+                    Oct 2024 – Mar 2025
+                  </span>
+                  <span class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                    <i class="fa-solid fa-location-dot mr-1 text-amber-500"></i>Dhaka, Bangladesh
+                  </span>
+                </div>
+                <h3 class="font-serif font-bold text-xl sm:text-2xl">Multimedia Journalist</h3>
+                <p class="text-sm font-semibold text-amber-600 dark:text-amber-400 mb-4">
+                  The Daily Janakantha
+                </p>
+                <ul class="space-y-2.5 text-sm text-slate-600 dark:text-slate-300">
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-check text-amber-500 mt-1 shrink-0"></i>
+                    <span>Conducted on-the-ground public interest interviews and field reporting across Dhaka.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-check text-amber-500 mt-1 shrink-0"></i>
+                    <span>Handled end-to-end <strong>News Package Production</strong>, including journalistic scripting, video editing in Adobe Premiere Pro, and on-camera <strong>News Presentation</strong>.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         4. PHOTO GALLERY: MOMENTS IN MEDIA, LEADERSHIP & STAGE
+         ========================================== -->
+    <section id="gallery" class="py-20 border-t border-slate-900/10 dark:border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div>
+            <span class="text-xs font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-semibold block mb-2">
+              VISUAL ARCHIVE • 6 PORTFOLIO PHOTOGRAPHS
+            </span>
+            <h2 class="font-serif font-bold text-3xl sm:text-4xl tracking-tight">
+              Moments in Leadership, Athletics & Stage
+            </h2>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
+              Click any photograph to open the full-resolution story in the lightbox, or use the <strong>Load 6 Photos</strong> button to preview your local files directly.
+            </p>
+          </div>
+
+          <!-- Gallery Filter Buttons -->
+          <div class="flex flex-wrap gap-2">
+            <button onclick="filterGallery('all')" data-gfilter="all" class="gal-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-amber-500 text-slate-950 transition">
+              All (6)
+            </button>
+            <button onclick="filterGallery('athletics')" data-gfilter="athletics" class="gal-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold theme-card hover:border-amber-500 transition">
+              Championship (2)
+            </button>
+            <button onclick="filterGallery('awards')" data-gfilter="awards" class="gal-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold theme-card hover:border-amber-500 transition">
+              PR & Recognition (1)
+            </button>
+            <button onclick="filterGallery('culture')" data-gfilter="culture" class="gal-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold theme-card hover:border-amber-500 transition">
+              Stage & Acting (1)
+            </button>
+            <button onclick="filterGallery('portrait')" data-gfilter="portrait" class="gal-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold theme-card hover:border-amber-500 transition">
+              Campus & Portrait (2)
+            </button>
+          </div>
+        </div>
+
+        <!-- 6-Photo Interactive Grid -->
+        <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+          <!-- Populated by JS so all 6 photos have unified lightbox + fallback + file binding -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         5. SKILLS, TOOLS, LANGUAGES & ACADEMIC FOUNDATION
+         ========================================== -->
+    <section id="skills" class="py-20 bg-paper/60 dark:bg-slateCard/50 border-t border-slate-900/10 dark:border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+        <!-- Part A: Skills & Proficiencies Matrix -->
+        <div>
+          <div class="mb-10">
+            <span class="text-xs font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-semibold block mb-2">
+              COMPETENCIES & TOOLKIT
+            </span>
+            <h2 class="font-serif font-bold text-3xl sm:text-4xl tracking-tight">
+              Skills, Technical Tools & Languages
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Pillar 1: Journalism, PR & Strategic Comm -->
+            <div class="theme-card rounded-2xl p-6 sm:p-7">
+              <div class="w-11 h-11 rounded-xl bg-amber-500/15 text-amber-500 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-tower-broadcast"></i>
+              </div>
+              <h3 class="font-serif font-bold text-xl mb-2">Multimedia Journalism & PR</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mb-5">
+                Newsroom-tested production, strategic public relations, and multi-platform digital storytelling.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-semibold">Multimedia Journalism</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-semibold">News Package Production</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-semibold">News Presentation & Anchoring</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-semibold">Scripting & Editing</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-semibold">Public Relations Strategy</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-semibold">Social Media Marketing</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-semibold">Event Management</span>
+              </div>
+            </div>
+
+            <!-- Pillar 2: Creative Software & Data Science -->
+            <div class="theme-card rounded-2xl p-6 sm:p-7">
+              <div class="w-11 h-11 rounded-xl bg-amber-500/15 text-amber-500 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-film"></i>
+              </div>
+              <h3 class="font-serif font-bold text-xl mb-2">Production & Data Analytics</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mb-5">
+                Combining visual editing and documentary photography with statistical research in R.
+              </p>
+              <div class="space-y-3 text-xs font-semibold">
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span>Adobe Premiere Pro (Video Editing)</span>
+                    <span class="text-amber-500 font-mono">Advanced</span>
+                  </div>
+                  <div class="h-2 rounded-full bg-slate-900/10 dark:bg-white/10 overflow-hidden">
+                    <div class="h-full bg-amber-500 rounded-full" style="width: 94%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span>Storytelling with Data & R Programming</span>
+                    <span class="text-amber-500 font-mono">Research & Data Science</span>
+                  </div>
+                  <div class="h-2 rounded-full bg-slate-900/10 dark:bg-white/10 overflow-hidden">
+                    <div class="h-full bg-amber-500 rounded-full" style="width: 85%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span>Photography, Visual Framing & Documentation</span>
+                    <span class="text-amber-500 font-mono">Expert</span>
+                  </div>
+                  <div class="h-2 rounded-full bg-slate-900/10 dark:bg-white/10 overflow-hidden">
+                    <div class="h-full bg-amber-500 rounded-full" style="width: 92%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span>Microsoft Office & Editorial Publishing</span>
+                    <span class="text-amber-500 font-mono">Proficient</span>
+                  </div>
+                  <div class="h-2 rounded-full bg-slate-900/10 dark:bg-white/10 overflow-hidden">
+                    <div class="h-full bg-amber-500 rounded-full" style="width: 95%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pillar 3: Languages & Soft Leadership Skills -->
+            <div class="theme-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between">
+              <div>
+                <div class="w-11 h-11 rounded-xl bg-amber-500/15 text-amber-500 flex items-center justify-center text-xl mb-4">
+                  <i class="fa-solid fa-earth-asia"></i>
+                </div>
+                <h3 class="font-serif font-bold text-xl mb-2">Languages & Facilitation</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                  Bilingual journalistic fluency and certified Master Trainer facilitation skills.
+                </p>
+
+                <!-- CEFR Language Breakdown -->
+                <div class="space-y-2.5 mb-5">
+                  <div class="p-2.5 rounded-xl bg-slate-900/5 dark:bg-white/5 flex items-center justify-between">
+                    <span class="font-bold text-xs">Bengali (বাংলা)</span>
+                    <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-500 font-mono text-[11px]">Mother Tongue</span>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-slate-900/5 dark:bg-white/5">
+                    <div class="flex items-center justify-between mb-1.5">
+                      <span class="font-bold text-xs">English</span>
+                      <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-500 font-mono text-[11px]">CEFR C2 / C1</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-1 text-[10px] font-mono text-center text-slate-500 dark:text-slate-400">
+                      <span class="bg-black/10 dark:bg-white/5 py-1 rounded">Listen: C2</span>
+                      <span class="bg-black/10 dark:bg-white/5 py-1 rounded">Read: C2</span>
+                      <span class="bg-black/10 dark:bg-white/5 py-1 rounded">Speak: C1</span>
+                      <span class="bg-black/10 dark:bg-white/5 py-1 rounded">Write: C1</span>
+                    </div>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-slate-900/5 dark:bg-white/5 flex items-center justify-between">
+                    <span class="font-bold text-xs">French</span>
+                    <span class="px-2 py-0.5 rounded bg-slate-500/20 text-slate-400 font-mono text-[11px]">Reading A2 • A1</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Soft Skills Pills -->
+              <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-900/10 dark:border-white/10">
+                <span class="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-300 text-[11px] font-semibold">Team Management</span>
+                <span class="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-300 text-[11px] font-semibold">Mentoring & Leadership</span>
+                <span class="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-300 text-[11px] font-semibold">Problem Solving</span>
+                <span class="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-300 text-[11px] font-semibold">Stage Acting & Voice Modulation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Part B: Education & Academic Foundation -->
+        <div>
+          <div class="mb-8">
+            <span class="text-xs font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-semibold block mb-2">
+              ACADEMIC BACKGROUND
+            </span>
+            <h2 class="font-serif font-bold text-3xl sm:text-4xl tracking-tight">
+              Education & Core Coursework
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- University of Dhaka (Spans 2 cols on desktop) -->
+            <div class="lg:col-span-2 theme-card rounded-2xl p-6 sm:p-8 border-l-4 border-l-amber-500">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="px-3 py-1 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-mono text-xs font-bold">
+                  7 Sep 2022 – 7 Sep 2026 • EQF Level 6
+                </span>
+                <span class="text-xs font-mono text-slate-500 dark:text-slate-400">Dhaka, Bangladesh</span>
+              </div>
+              <h3 class="font-serif font-bold text-2xl mb-1">
+                Bachelor of Social Sciences (BSS) in Mass Communication & Journalism
+              </h3>
+              <p class="text-base font-semibold text-amber-600 dark:text-amber-400 mb-4">
+                University of Dhaka — Department of Mass Communication & Journalism
+              </p>
+              <p class="text-xs uppercase font-mono tracking-wider text-slate-500 dark:text-slate-400 mb-3">
+                Specialized Academic Modules & Training:
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-medium">Development Support & Strategic Communication</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-medium">Video Production</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-medium">Journalistic Writing Skills (Bengali & English)</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-medium">International Communication</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-medium">Development Communication</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-medium">Editing & Publishing</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-medium">Contemporary World Affairs</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-medium">Interpersonal & Group Communication</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-medium">Mass Communication: Structure & Process</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-medium">Bangladesh Culture & Heritage</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-medium">ICT Skills & Economics</span>
+              </div>
+            </div>
+
+            <!-- HSC & SSC Column -->
+            <div class="space-y-6">
+              <div class="theme-card rounded-2xl p-6">
+                <div class="flex items-center justify-between text-xs font-mono text-amber-600 dark:text-amber-400 mb-2">
+                  <span>Jun 2019 – Aug 2021</span>
+                  <span>EQF Level 4</span>
+                </div>
+                <h4 class="font-serif font-bold text-lg">Higher Secondary School Certificate (HSC)</h4>
+                <p class="text-sm text-slate-600 dark:text-slate-300 font-medium mt-1">
+                  Saint Joseph Higher Secondary School
+                </p>
+                <p class="text-xs text-slate-500 mt-1">Dhaka, Bangladesh</p>
+              </div>
+
+              <div class="theme-card rounded-2xl p-6">
+                <div class="flex items-center justify-between text-xs font-mono text-amber-600 dark:text-amber-400 mb-2">
+                  <span>Jan 2009 – Nov 2019</span>
+                  <span>EQF Level 2</span>
+                </div>
+                <h4 class="font-serif font-bold text-lg">Secondary School Certificate (SSC)</h4>
+                <p class="text-sm text-slate-600 dark:text-slate-300 font-medium mt-1">
+                  Monipur High School and College
+                </p>
+                <p class="text-xs text-slate-500 mt-1">Dhaka, Bangladesh</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         6. CERTIFICATIONS, HONORS & ACHIEVEMENTS VAULT
+         ========================================== -->
+    <section id="certifications" class="py-20 border-t border-slate-900/10 dark:border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+          <div>
+            <span class="text-xs font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-semibold block mb-2">
+              VERIFIED CREDENTIALS & HONORS (13)
+            </span>
+            <h2 class="font-serif font-bold text-3xl sm:text-4xl tracking-tight">
+              Certifications, Fellowships & Awards Vault
+            </h2>
+          </div>
+
+          <!-- Filter & Search Controls -->
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="filterCerts('all')" data-cfilter="all" class="cert-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-amber-500 text-slate-950 transition">
+              All (13)
+            </button>
+            <button onclick="filterCerts('democracy')" data-cfilter="democracy" class="cert-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold theme-card hover:border-amber-500 transition">
+              Democracy & Human Rights (5)
+            </button>
+            <button onclick="filterCerts('leadership')" data-cfilter="leadership" class="cert-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold theme-card hover:border-amber-500 transition">
+              Awards & Athletics (3)
+            </button>
+            <button onclick="filterCerts('media')" data-cfilter="media" class="cert-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold theme-card hover:border-amber-500 transition">
+              PR, Media & Data (5)
+            </button>
+          </div>
+        </div>
+
+        <!-- 13 Certifications Grid -->
+        <div id="certs-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         7. RECOMMENDATIONS & ENDORSEMENTS
+         ========================================== -->
+    <section id="endorsements" class="py-20 bg-paper/60 dark:bg-slateCard/50 border-t border-slate-900/10 dark:border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-12 text-center max-w-3xl mx-auto">
+          <span class="text-xs font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-semibold block mb-2">
+            PROFESSIONAL REFERENCES
+          </span>
+          <h2 class="font-serif font-bold text-3xl sm:text-4xl tracking-tight mb-3">
+            Recommendations & Endorsements
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400">
+            Endorsements from senior program and communication leaders who have collaborated directly with Rafin on social impact and multimedia initiatives.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Recommendation 1: Ishtiaque Ahmed Shushmoy -->
+          <div class="theme-card rounded-3xl p-7 sm:p-9 flex flex-col justify-between relative">
+            <i class="fa-solid fa-quote-right text-5xl text-amber-500/15 absolute top-6 right-8"></i>
+            <div class="space-y-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed relative z-10">
+              <p>
+                "I have had the pleasure of knowing <strong>Imran Hasan Rafin</strong> as a dedicated, proactive, and purpose-driven individual. His commitment to creating positive social impact, combined with his strong sense of responsibility and leadership, makes him someone you can always rely on."
+              </p>
+              <p>
+                "Rafin consistently demonstrates professionalism, excellent teamwork, and a willingness to take initiative. He approaches every task with enthusiasm, adapts quickly to new challenges, and maintains a positive attitude even in demanding situations. His communication skills and ability to collaborate effectively with diverse teams have always stood out."
+              </p>
+              <p>
+                "Beyond his technical and organizational abilities, Rafin is someone who genuinely cares about making a difference in his community. I am confident that his passion, integrity, and work ethic will continue to help him excel in any role or organization."
+              </p>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-slate-900/10 dark:border-white/10 flex flex-wrap items-center justify-between gap-4">
+              <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/40 text-amber-600 dark:text-amber-400 font-serif font-bold text-lg flex items-center justify-center">
+                  IA
+                </div>
+                <div>
+                  <h3 class="font-bold text-base">Ishtiaque Ahmed Shushmoy</h3>
+                  <p class="text-xs text-amber-600 dark:text-amber-400 font-semibold">Senior Program Manager • It's Humanity Foundation</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 text-xs font-mono">
+                <a href="mailto:ishtiaque@itshumanity.org" class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 hover:bg-amber-500 hover:text-slate-950 transition" title="Email Reference">
+                  <i class="fa-solid fa-envelope mr-1"></i>ishtiaque@itshumanity.org
+                </a>
+                <a href="tel:+8801521323468" class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 hover:bg-amber-500 hover:text-slate-950 transition" title="Call Reference">
+                  <i class="fa-solid fa-phone"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recommendation 2: Meherun Naher Meghla -->
+          <div class="theme-card rounded-3xl p-7 sm:p-9 flex flex-col justify-between relative">
+            <i class="fa-solid fa-quote-right text-5xl text-amber-500/15 absolute top-6 right-8"></i>
+            <div class="space-y-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed relative z-10">
+              <p>
+                "I had the pleasure of collaborating with <strong>Imran Hasan Rafin</strong> on several communication and multimedia projects, particularly in video editing. Throughout our collaboration, he consistently demonstrated a strong sense of responsibility, creativity, and a genuine passion for producing quality work."
+              </p>
+              <p>
+                "What impressed me most was his eagerness to learn, openness to feedback, and commitment to continuous improvement. He quickly understands creative requirements, pays attention to detail, and is always willing to go the extra mile to deliver the best possible outcome. His positive attitude and collaborative approach make him a dependable team member and a pleasure to work with."
+              </p>
+              <p>
+                "I am confident that Rafin's dedication, strong work ethic, and enthusiasm for communication and multimedia will continue to help him grow professionally. I highly recommend him to any organization looking for a passionate, reliable, and motivated professional."
+              </p>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-slate-900/10 dark:border-white/10 flex flex-wrap items-center justify-between gap-4">
+              <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/40 text-amber-600 dark:text-amber-400 font-serif font-bold text-lg flex items-center justify-center">
+                  MN
+                </div>
+                <div>
+                  <h3 class="font-bold text-base">Meherun Naher Meghla</h3>
+                  <p class="text-xs text-amber-600 dark:text-amber-400 font-semibold">Communication & Youth Mobilization Associate</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 text-xs font-mono">
+                <a href="mailto:megh9mcj.du@gmail.com" class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 hover:bg-amber-500 hover:text-slate-950 transition" title="Email Reference">
+                  <i class="fa-solid fa-envelope mr-1"></i>megh9mcj.du@gmail.com
+                </a>
+                <a href="tel:+8801783560092" class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 hover:bg-amber-500 hover:text-slate-950 transition" title="Call Reference">
+                  <i class="fa-solid fa-phone"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         8. CONTACT HUB & COLLABORATION DISPATCH
+         ========================================== -->
+    <section id="contact" class="py-20 border-t border-slate-900/10 dark:border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+          <!-- Left Column: Direct Contact Details & Social Channels (5 cols) -->
+          <div class="lg:col-span-5 space-y-6">
+            <div>
+              <span class="text-xs font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-semibold block mb-2">
+                GET IN TOUCH
+              </span>
+              <h2 class="font-serif font-bold text-3xl sm:text-4xl tracking-tight mb-3">
+                Let's Collaborate on Media, PR & Civic Impact
+              </h2>
+              <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400">
+                Available for Strategic Communications & PR roles, Multimedia Journalism assignments, Human Rights & Democracy Training Facilitation, and Documentary Production.
+              </p>
+            </div>
+
+            <!-- Contact Cards -->
+            <div class="space-y-3.5">
+              <div class="theme-card rounded-2xl p-4 flex items-center justify-between gap-4">
+                <div class="flex items-center gap-3.5">
+                  <div class="w-11 h-11 rounded-xl bg-amber-500/15 text-amber-500 flex items-center justify-center text-lg shrink-0">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <div>
+                    <span class="text-xs font-mono text-slate-500 dark:text-slate-400 block">Email Address</span>
+                    <a href="mailto:imranhasanrafin@gmail.com" class="font-bold text-sm sm:text-base hover:text-amber-500 transition">
+                      imranhasanrafin@gmail.com
+                    </a>
+                  </div>
+                </div>
+                <button onclick="copyText('imranhasanrafin@gmail.com', 'Email copied!')" class="px-3 py-1.5 rounded-lg bg-slate-900/5 dark:bg-white/5 hover:bg-amber-500 hover:text-slate-950 text-xs font-mono transition">
+                  Copy
+                </button>
+              </div>
+
+              <div class="theme-card rounded-2xl p-4 flex items-center justify-between gap-4">
+                <div class="flex items-center gap-3.5">
+                  <div class="w-11 h-11 rounded-xl bg-emerald-500/15 text-emerald-500 flex items-center justify-center text-lg shrink-0">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <div>
+                    <span class="text-xs font-mono text-slate-500 dark:text-slate-400 block">Phone & WhatsApp Messenger</span>
+                    <a href="tel:+8801715527634" class="font-bold text-sm sm:text-base hover:text-amber-500 transition">
+                      (+880) 1715527634
+                    </a>
+                  </div>
+                </div>
+                <a href="https://wa.me/8801715527634" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-emerald-500 text-slate-950 font-bold text-xs transition hover:bg-emerald-400">
+                  Chat
+                </a>
+              </div>
+            </div>
+
+            <!-- Social Profiles Row -->
+            <div class="pt-2">
+              <span class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-3">
+                Social & Professional Networks
+              </span>
+              <div class="flex flex-wrap gap-3">
+                <a href="https://www.linkedin.com/search/results/all/?keywords=Md.%20Imran%20Hasan%20Rafin" target="_blank" rel="noopener noreferrer" class="theme-card px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 hover:border-amber-500">
+                  <i class="fa-brands fa-linkedin text-blue-500 text-base"></i>
+                  <span>Md. Imran Hasan Rafin</span>
+                </a>
+                <a href="https://www.facebook.com/search/top?q=Imran%20Hasan%20Rafin" target="_blank" rel="noopener noreferrer" class="theme-card px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 hover:border-amber-500">
+                  <i class="fa-brands fa-facebook text-blue-600 text-base"></i>
+                  <span>Imran Hasan Rafin</span>
+                </a>
+                <a href="https://www.instagram.com/imranhasanrafin/" target="_blank" rel="noopener noreferrer" class="theme-card px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 hover:border-amber-500">
+                  <i class="fa-brands fa-instagram text-pink-500 text-base"></i>
+                  <span>@imranhasanrafin</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Message Dispatcher (7 cols) -->
+          <div class="lg:col-span-7">
+            <div class="theme-card rounded-3xl p-6 sm:p-9 shadow-xl">
+              <h3 class="font-serif font-bold text-2xl mb-2">Send a Direct Inquiry</h3>
+              <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-6">
+                Fill out your message below and choose whether to launch it directly via <strong>Email</strong> or <strong>WhatsApp</strong>.
+              </p>
+
+              <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-mono uppercase mb-1.5 text-slate-600 dark:text-slate-300">Your Name *</label>
+                    <input type="text" id="sender-name" required placeholder="e.g., Sarah Rahman" class="w-full px-4 py-3 rounded-xl bg-slate-900/5 dark:bg-white/5 border border-slate-900/15 dark:border-white/15 focus:outline-none focus:border-amber-500 text-sm" />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-mono uppercase mb-1.5 text-slate-600 dark:text-slate-300">Organization / Media House</label>
+                    <input type="text" id="sender-org" placeholder="e.g., International IDEA / Daily Star" class="w-full px-4 py-3 rounded-xl bg-slate-900/5 dark:bg-white/5 border border-slate-900/15 dark:border-white/15 focus:outline-none focus:border-amber-500 text-sm" />
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-mono uppercase mb-1.5 text-slate-600 dark:text-slate-300">Inquiry Category</label>
+                  <select id="sender-topic" class="w-full px-4 py-3 rounded-xl bg-slate-900/5 dark:bg-slate-800 border border-slate-900/15 dark:border-white/15 focus:outline-none focus:border-amber-500 text-sm">
+                    <option value="PR & Strategic Communication Role">PR & Strategic Communication Role</option>
+                    <option value="Multimedia Journalism & Video Production">Multimedia Journalism & Video Production</option>
+                    <option value="Human Rights / Civic Workshop Facilitation">Human Rights / Civic Workshop Facilitation</option>
+                    <option value="Academic / Fellowship Opportunity">Academic / Fellowship Opportunity</option>
+                    <option value="General Collaboration">General Collaboration</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-mono uppercase mb-1.5 text-slate-600 dark:text-slate-300">Your Message *</label>
+                  <textarea id="sender-message" rows="4" required placeholder="Hello Rafin, I would love to discuss an upcoming strategic communication project..." class="w-full px-4 py-3 rounded-xl bg-slate-900/5 dark:bg-white/5 border border-slate-900/15 dark:border-white/15 focus:outline-none focus:border-amber-500 text-sm"></textarea>
+                </div>
+
+                <div class="pt-2 flex flex-wrap items-center gap-3">
+                  <button type="submit" data-mode="email" class="px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition flex items-center gap-2 shadow-lg shadow-amber-500/20">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Send via Email Client</span>
+                  </button>
+                  <button type="button" onclick="sendViaWhatsApp()" class="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition flex items-center gap-2 shadow-lg shadow-emerald-600/20">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span>Send via WhatsApp</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-900/10 dark:border-white/10 py-10 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-lg bg-amber-500 text-slate-950 font-serif font-bold flex items-center justify-center">IR</span>
+        <span>© 2026 <strong>Md. Imran Hasan Rafin</strong>. Department of Mass Communication & Journalism, University of Dhaka.</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <button onclick="openCvModal()" class="hover:text-amber-500 transition font-semibold">Printable CV</button>
+        <span>•</span>
+        <button onclick="triggerBatchPhotoLoad()" class="hover:text-amber-500 transition font-semibold">Sync Local Photos</button>
+        <span>•</span>
+        <a href="#top" class="hover:text-amber-500 transition font-semibold">Back to Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       CASE STUDY MODAL (For Action Projects)
+       ========================================== -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+    <div class="theme-card rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl my-8">
+      <button onclick="closeProjectModal()" class="absolute top-5 right-5 w-10 h-10 rounded-full bg-slate-900/10 dark:bg-white/10 hover:bg-amber-500 hover:text-slate-950 transition flex items-center justify-center">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+      <div id="project-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       PHOTO LIGHTBOX MODAL
+       ========================================== -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-slate-950/95 backdrop-blur-lg flex items-center justify-center p-4">
+    <button onclick="closeLightbox()" class="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10 hover:bg-amber-500 text-white hover:text-slate-950 transition flex items-center justify-center z-10">
+      <i class="fa-solid fa-xmark text-xl"></i>
+    </button>
+    <div class="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+      <div class="lg:col-span-8 bg-black/50 rounded-2xl overflow-hidden flex items-center justify-center max-h-[75vh] min-h-[320px] relative border border-white/10">
+        <img id="lightbox-img" src="" alt="" class="max-h-[75vh] w-auto object-contain" />
+        <div id="lightbox-fallback" class="hidden p-8 text-center text-white">
+          <i class="fa-solid fa-camera text-amber-400 text-4xl mb-3"></i>
+          <p id="lightbox-fallback-text" class="text-sm text-slate-300 mb-4"></p>
+          <button id="lightbox-load-btn" class="px-4 py-2 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs">
+            Select Photo from Computer
+          </button>
+        </div>
+      </div>
+      <div class="lg:col-span-4 text-white space-y-4 p-2">
+        <span id="lightbox-tag" class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 font-mono text-xs"></span>
+        <h3 id="lightbox-title" class="font-serif font-bold text-2xl"></h3>
+        <p id="lightbox-caption" class="text-sm text-slate-300 leading-relaxed"></p>
+        <div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+          <span id="lightbox-filename"></span>
+          <button onclick="closeLightbox()" class="text-amber-400 hover:underline">Close [ESC]</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       PRINTABLE / EXPORTABLE EUROPASS CV MODAL
+       ========================================== -->
+  <div id="cv-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+    <div class="theme-card rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-10 relative shadow-2xl">
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-900/10 dark:border-white/10 sticky top-0 bg- inherit z-10 backdrop-blur-md">
+        <div>
+          <span class="text-xs font-mono uppercase text-amber-500 font-bold">EUROPASS CURRICULUM VITAE SUMMARY</span>
+          <h3 class="font-serif font-bold text-2xl">Md. Imran Hasan Rafin</h3>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="window.print()" class="px-4 py-2 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs sm:text-sm flex items-center gap-2 hover:bg-amber-400 transition">
+            <i class="fa-solid fa-print"></i> Print / Save PDF
+          </button>
+          <button onclick="closeCvModal()" class="w-10 h-10 rounded-xl bg-slate-900/10 dark:bg-white/10 hover:bg-red-500/20 flex items-center justify-center">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Printable CV Content Area -->
+      <div id="cv-print-area" class="space-y-6 pt-6 text-sm">
+        <div class="border-b border-slate-500/20 pb-4">
+          <h1 class="text-2xl font-bold">Md. Imran Hasan Rafin</h1>
+          <p class="text-amber-600 dark:text-amber-400 font-semibold">Head of PR & Communication | Master Trainer (ADL & DIHR) | Multimedia Journalist</p>
+          <p class="text-xs text-slate-500 mt-1">
+            Phone/WhatsApp: (+880) 1715527634 • Email: imranhasanrafin@gmail.com
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold uppercase tracking-wider text-xs text-amber-600 dark:text-amber-400 mb-2">Work Experience</h4>
+          <ul class="space-y-2.5">
+            <li><strong>Master Trainer | Applied Democracy Lab (DIHR Partnership)</strong> (Jun 2026 – Present): Facilitated 8 university training sessions on HTTP across Bangladesh; DFTP (USAID & IFES) & YDA (International IDEA) alumnus.</li>
+            <li><strong>Head of PR & Communication | Genesis Foundation</strong> (Jan 2024 – Present): Internal & external communication, field visits, report writing, video production, photography, documentation. Awarded Best Team Lead (Jan 2026).</li>
+            <li><strong>Team Lead of Youth Media | SAVE Youth - Students Against Violence</strong> (Aug 2025 – Present): National Genvote Hackathon Champion & field implementation lead; youth activity presentation.</li>
+            <li><strong>Multimedia Journalist | The Daily Janakantha</strong> (Oct 2024 – Mar 2025): Conducted interviews, video editing, scripting, news package production, news presentation.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold uppercase tracking-wider text-xs text-amber-600 dark:text-amber-400 mb-2">Education</h4>
+          <ul class="space-y-1.5">
+            <li><strong>Bachelor of Social Sciences (BSS) in Mass Communication & Journalism</strong> — University of Dhaka (Sep 2022 – Sep 2026, EQF Level 6)</li>
+            <li><strong>Higher Secondary School Certificate (HSC)</strong> — Saint Joseph Higher Secondary School, Dhaka (2019 – 2021, EQF Level 4)</li>
+            <li><strong>Secondary School Certificate (SSC)</strong> — Monipur High School and College, Dhaka (2009 – 2019, EQF Level 2)</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold uppercase tracking-wider text-xs text-amber-600 dark:text-amber-400 mb-2">Key Action Projects</h4>
+          <ul class="space-y-1.5">
+            <li><strong>Ballot Panchali (Dec 2025 – Feb 2026):</strong> Voter education board game; National Champion & Field Grant Winner at IFES & Bangladesh Election Commission Hackathon.</li>
+            <li><strong>Bridging Barriers & Short Film "Under One Sky" (Oct 2024 – Mar 2025):</strong> DU campus disability inclusion campaign, DUCSU voting rights film, VC Memorandum, Gallery Walk & Community Dialogue.</li>
+            <li><strong>Institutional Voices, Individual Silences (Jun 2025 – Aug 2025):</strong> Gender equity campaign at University of Dhaka contributing to female dormitory rule reforms.</li>
+            <li><strong>Smart Agro-Industrial Hub (Oct 2025 – Oct 2026):</strong> National Finalist at IDEA FEST Hackathon by Ziaur Rahman Foundation.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold uppercase tracking-wider text-xs text-amber-600 dark:text-amber-400 mb-2">References</h4>
+          <p><strong>Ishtiaque Ahmed Shushmoy</strong> — Senior Program Manager, It's Humanity Foundation | (+880) 1521323468 | ishtiaque@itshumanity.org</p>
+          <p><strong>Meherun Naher Meghla</strong> — Communication and Youth Mobilization Associate | (+880) 1783560092 | megh9mcj.du@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden px-4 py-3 rounded-xl bg-slate-900 text-amber-400 border border-amber-500/40 font-semibold text-xs sm:text-sm shadow-2xl flex items-center gap-2">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toast-msg">Action completed</span>
+  </div>
+
+  <!-- ==========================================
+       APPLICATION JAVASCRIPT
+       ========================================== -->
+  <script>
+    /* -----------------------------------------------------------
+       1. DATA: 6 PORTFOLIO PHOTOS (Exact Filenames + Captions)
+       ----------------------------------------------------------- */
+    const portfolioPhotos = [
+      {
+        id: 'IMG_E5314.jpg',
+        title: 'Portrait at University of Dhaka',
+        category: 'portrait',
+        tag: 'Portrait & Identity',
+        date: '2025 • Dhaka',
+        caption: 'Outdoor sunlit portrait of Md. Imran Hasan Rafin, BSS graduate in Mass Communication & Journalism from the University of Dhaka.',
+        icon: 'fa-user-tie'
+      },
+      {
+        id: 'IMG_0328.jpg',
+        title: 'Best Team Lead Award — Genesis Foundation',
+        category: 'awards',
+        tag: 'PR & Leadership Recognition',
+        date: '1 Jan 2026 • Genesis Foundation',
+        caption: 'Rafin holding the "Best Lead Award 2025" crest and Certificate of Experience as Team Lead of PR & Communications at Genesis Foundation, recognized for integrity, collaboration, and humanitarian impact.',
+        icon: 'fa-award'
+      },
+      {
+        id: 'IMG_1427.jpg',
+        title: 'Basketball Championship Pride at MCJ',
+        category: 'athletics',
+        tag: 'Inter-Department Champion',
+        date: 'Jan 2026 • Dept. of MCJ, DU',
+        caption: 'Standing before the Department of Mass Communication and Journalism plaque at the University of Dhaka holding the golden Inter-Department Basketball Championship 2024–25 Trophy as Champion Team Member & Manager.',
+        icon: 'fa-trophy'
+      },
+      {
+        id: 'IMG_1334.jpg',
+        title: 'Official Reception Ceremony (সংবর্ধনা অনুষ্ঠান)',
+        category: 'athletics',
+        tag: 'University Honors',
+        date: '26 Jan 2026 • University of Dhaka',
+        caption: 'Receiving the Certificate of Achievement from University of Dhaka faculty and dignitaries at the official reception ceremony (সংবর্ধনা অনুষ্ঠান) celebrating the Inter-Department Basketball Tournament 2024–25 Championship.',
+        icon: 'fa-medal'
+      },
+      {
+        id: 'IMG_2176.jpg',
+        title: 'Dramatic Stage Performance in Advocate Robes',
+        category: 'culture',
+        tag: 'Stage & Cultural Society',
+        date: '2024–2025 • DU Cultural Society',
+        caption: 'Performing live on stage in courtroom advocate robes—applying voice modulation, stagecraft, and emotional expression honed with the Dhaka University Cultural Society.',
+        icon: 'fa-masks-theater'
+      },
+      {
+        id: 'IMG_5316.jpg',
+        title: 'On the Move: Campus & Field Storytelling',
+        category: 'portrait',
+        tag: 'Field & Campus Life',
+        date: '2025 • Bangladesh',
+        caption: 'Wide architectural and nature shot with field gear bag beneath a towering tree—capturing the everyday rhythm of field reporting, documentary production, and university training facilitation.',
+        icon: 'fa-camera-retro'
+      }
+    ];
+
+    // Track loaded blob URLs or successful native loads
+    const loadedPhotosMap = {};
+    let activeSingleSlotTarget = null;
+
+    /* -----------------------------------------------------------
+       2. DATA: 4 ACTION PROJECTS & CASE STUDIES
+       ----------------------------------------------------------- */
+    const projectsData = [
+      {
+        id: 'ballot-panchali',
+        title: 'Ballot Panchali — Voter Education Board Game',
+        timeline: '20 Dec 2025 – 7 Feb 2026',
+        category: 'innovation',
+        secondaryCategory: 'civic',
+        badge: 'National Hackathon Champion & Grant Winner',
+        org: 'IFES, Bangladesh Election Commission & SAVE Youth',
+        summary: 'An interactive educational board game designed to teach Bangladeshi voters about their voting rights and electoral integrity. Won the National Genvote Hackathon and secured field implementation funding.',
+        metrics: ['National Champion Team', 'Field Grant Awarded', 'Gamified Civic Literacy'],
+        problem: 'Traditional voter education pamphlets often fail to engage first-time youth voters and grassroots communities across Bangladesh.',
+        solution: 'Designed "Ballot Panchali", an accessible, culturally resonant board game that turns electoral rules, voter rights, and democratic participation into an interactive group experience.',
+        outcome: 'Crowned Champion Team at the National Level Hackathon arranged by IFES and the Bangladesh Election Commission, earning a direct grant to manufacture and implement the project at the field level.'
+      },
+      {
+        id: 'bridging-barriers',
+        title: 'Bridging Barriers & Short Film "Under One Sky"',
+        timeline: '4 Oct 2024 – 25 Mar 2025',
+        category: 'film',
+        secondaryCategory: 'civic',
+        badge: 'Inclusive Campus & Documentary Campaign',
+        org: 'University of Dhaka • Disability Inclusion Action Project',
+        summary: 'Multi-channel advocacy campaign to convert the University of Dhaka into a disability-friendly campus, anchored by the awareness short film "Under One Sky" on DUCSU voting rights.',
+        metrics: ['Short Film "Under One Sky"', 'Memorandum to DU VC', 'Gallery Walk & Dialogues'],
+        problem: 'Students with disabilities at the University of Dhaka faced physical architectural barriers in classrooms and lacked tailored awareness regarding their voting rights in the DUCSU student council election.',
+        solution: 'Produced and screened the awareness-raising short film "Under One Sky", conducted video interviews with students with disabilities to center their lived experiences online, organized a public Gallery Walk and Community Dialogue, and submitted a formal policy Memorandum directly to the Vice Chancellor of the University of Dhaka.',
+        outcome: 'Elevated disability inclusion and accessible infrastructure onto the central administrative agenda of the University of Dhaka and sensitized thousands of students prior to DUCSU elections.'
+      },
+      {
+        id: 'institutional-voices',
+        title: 'Institutional Voices, Individual Silences',
+        timeline: '1 Jun 2025 – 25 Aug 2025',
+        category: 'civic',
+        secondaryCategory: 'all',
+        badge: 'Policy Reform & Gender Equity Campaign',
+        org: 'University of Dhaka',
+        summary: 'Strategic advocacy campaign combining community dialogue, social media storytelling, and campus postering to challenge gender-insensitive rules in female student dormitories—contributing to tangible dorm rule reforms.',
+        metrics: ['Dormitory Rule Reforms', 'Community Dialogues', 'Campus-Wide Mobilization'],
+        problem: 'Female students in University of Dhaka dormitories experienced restrictive, gender-insensitive administrative rules that curtailed their academic and personal mobility.',
+        solution: 'Executed a coordinated communication campaign featuring student community dialogues, visual campus postering, and digital storytelling to amplify female residents\' perspectives.',
+        outcome: 'Generated widespread campus awareness and constructive pressure, after which the University of Dhaka administration enacted reforms to the female dormitory rules.'
+      },
+      {
+        id: 'smart-agro',
+        title: 'Smart Agro-Industrial Hub',
+        timeline: '10 Oct 2025 – 18 Oct 2026',
+        category: 'innovation',
+        secondaryCategory: 'all',
+        badge: 'National Hackathon Finalist',
+        org: 'IDEA FEST • Ziaur Rahman Foundation',
+        summary: 'Developed a scalable, technology-enabled agro-industrial framework recognized as one of the National Finalist teams at IDEA FEST.',
+        metrics: ['National Finalist Team', 'IDEA FEST (ZRF)', 'Sustainable Supply Chain'],
+        problem: 'Agricultural producers in Bangladesh face post-harvest losses and fragmented industrial processing links.',
+        solution: 'Formulated the Smart Agro-Industrial Hub concept integrating data-informed logistics, regional processing, and strategic development communication.',
+        outcome: 'Selected among the top Finalist Teams nationwide at the IDEA FEST National Hackathon organized by the Ziaur Rahman Foundation.'
+      }
+    ];
+
+    /* -----------------------------------------------------------
+       3. DATA: 13 CERTIFICATIONS & AWARDS
+       ----------------------------------------------------------- */
+    const certificationsData = [
+      {
+        title: 'R Programming for Data Science',
+        issuer: 'ORIYET (Online)',
+        date: '5 Jul 2026',
+        category: 'media',
+        icon: 'fa-chart-line',
+        desc: 'Dedicated 2-month intensive course on R programming for statistical research, data visualization, and data science.'
+      },
+      {
+        title: 'Master Trainer (MTOT on Human Rights From Theory to Practice)',
+        issuer: 'Applied Democracy Lab (DU) & Danish Institute for Human Rights (DIHR), Copenhagen',
+        date: '10 Jun 2026',
+        category: 'democracy',
+        icon: 'fa-scale-balanced',
+        desc: 'Master Training of Trainers (09–10 June 2026) focused on experiential learning methodologies to design and deliver human rights civic education and advocacy.'
+      },
+      {
+        title: 'Inter-Department Basketball Champion 2025',
+        issuer: 'University of Dhaka (Dept. of Mass Communication & Journalism)',
+        date: '26 Jan 2026',
+        category: 'leadership',
+        icon: 'fa-basketball',
+        desc: 'Recognized for outstanding performance and dedication as an integral member and Manager of the Champion Team in the DU Inter-Department Basketball Tournament 2024–25.'
+      },
+      {
+        title: 'Best Team Lead Award',
+        issuer: 'Genesis Foundation',
+        date: '1 Jan 2026',
+        category: 'leadership',
+        icon: 'fa-award',
+        desc: 'Awarded for leadership with professionalism, integrity, due diligence, and accountability in promoting community development and humanitarian action.'
+      },
+      {
+        title: 'Financial Literacy for Youth',
+        issuer: "Center for Youth Development (CFYD), It's Humanity Foundation",
+        date: '29 Dec 2025',
+        category: 'media',
+        icon: 'fa-coins',
+        desc: 'Completed specialized training session on youth financial management and organizational budgeting.'
+      },
+      {
+        title: 'Pursuing Electoral Integrity in Bangladesh',
+        issuer: 'Westminster Foundation for Democracy (WFD), London & ADL',
+        date: '20 Jul 2025',
+        category: 'democracy',
+        icon: 'fa-check-to-slot',
+        desc: 'Completed the mini-lecture series (16–17 July 2025) organized by Applied Democracy Lab, DU in partnership with WFD, UK.'
+      },
+      {
+        title: 'Democracy Intern — Youth Democracy Academy',
+        issuer: 'International IDEA & Applied Democracy Lab, DU',
+        date: '30 Jun 2025',
+        category: 'democracy',
+        icon: 'fa-landmark-dome',
+        desc: 'Completed the Youth Democracy Academy (01 Apr – 25 Jun 2025) and led the group action project titled "Empowering Youth Through Resilience".'
+      },
+      {
+        title: 'Participation: Human Rights and Democracy Special Lecture',
+        issuer: 'British High Commission in Bangladesh & ADL, University of Dhaka',
+        date: '5 Feb 2025',
+        category: 'democracy',
+        icon: 'fa-globe',
+        desc: 'Special Lecture delivered by Ms. Eleanor Sanders, UK Human Rights Ambassador and Deputy Permanent Representative to the UN.'
+      },
+      {
+        title: 'Best Executive Award',
+        issuer: 'Dhaka University Career Club (DUCC)',
+        date: '5 Jan 2025',
+        category: 'leadership',
+        icon: 'fa-star',
+        desc: 'Honored for outstanding dedication and year-long contributions to student career development programs at the University of Dhaka.'
+      },
+      {
+        title: 'Democracy From Theory To Practice (Semester-Long Course)',
+        issuer: 'International Foundation for Electoral Systems (IFES) & USAID',
+        date: '31 Dec 2024',
+        category: 'democracy',
+        icon: 'fa-book-open-reader',
+        desc: 'University-level semester-long civic education course (01 Sep – 20 Dec 2024) developed by IFES and supported by USAID.'
+      },
+      {
+        title: 'Accreditation in Public Relations (PR Master Certificate)',
+        issuer: 'Udemy',
+        date: '17 Sep 2024',
+        category: 'media',
+        icon: 'fa-bullhorn',
+        desc: 'Public Relations Master Professional Certificate covering media relations, crisis communication, and strategic campaigns.'
+      },
+      {
+        title: 'Social Media Marketing Certification',
+        issuer: 'HP LIFE',
+        date: '15 Sep 2024',
+        category: 'media',
+        icon: 'fa-share-nodes',
+        desc: 'Trained in cross-platform social advertising, targeted campaign design, and digital audience analytics.'
+      },
+      {
+        title: 'Acting Workshop (Stagecraft & Voice Modulation)',
+        issuer: 'Dhaka University Cultural Society',
+        date: '15 Apr 2024',
+        category: 'media',
+        icon: 'fa-masks-theater',
+        desc: 'Week-long intensive workshop with acting professionals on stage performance, voice modulation, emotions, and dramatic reactions.'
+      }
+    ];
+
+    /* -----------------------------------------------------------
+       4. RENDER FUNCTIONS (Projects, Gallery, Certifications)
+       ----------------------------------------------------------- */
+    function renderProjects(filter = 'all') {
+      const grid = document.getElementById('projects-grid');
+      const filtered = filter === 'all'
+        ? projectsData
+        : projectsData.filter(p => p.category === filter || p.secondaryCategory === filter);
+
+      grid.innerHTML = filtered.map(proj => `
+        <article class="theme-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <span class="px-3 py-1 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-mono text-xs font-bold">
+                ${proj.badge}
+              </span>
+              <span class="text-xs font-mono text-slate-500 dark:text-slate-400">${proj.timeline}</span>
+            </div>
+            <h3 class="font-serif font-bold text-2xl mb-1.5">${proj.title}</h3>
+            <p class="text-xs font-semibold text-amber-600 dark:text-amber-400 mb-4">${proj.org}</p>
+            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+              ${proj.summary}
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-2 mb-6">
+              ${proj.metrics.map(m => `
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5 text-xs font-mono font-medium">
+                  <i class="fa-solid fa-bolt text-amber-500 mr-1"></i>${m}
+                </span>
+              `).join('')}
+            </div>
+
+            <button onclick="openProjectModal('${proj.id}')" class="w-full py-3 px-4 rounded-xl bg-slate-900/5 dark:bg-white/5 hover:bg-amber-500 hover:text-slate-950 font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2">
+              <span>Read Full Case Study</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function filterProjects(category) {
+      document.querySelectorAll('.proj-filter-btn').forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.className = 'proj-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-amber-500 text-slate-950 transition';
+        } else {
+          btn.className = 'proj-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold theme-card hover:border-amber-500 transition';
+        }
+      });
+      renderProjects(category);
+    }
+
+    function openProjectModal(projectId) {
+      const proj = projectsData.find(p => p.id === projectId);
+      if (!proj) return;
+      const content = document.getElementById('project-modal-content');
+      content.innerHTML = `
+        <span class="px-3 py-1 rounded-full bg-amber-500/15 text-amber-500 font-mono text-xs font-bold inline-block mb-3">
+          ${proj.badge} • ${proj.timeline}
+        </span>
+        <h3 class="font-serif font-bold text-2xl sm:text-3xl mb-1">${proj.title}</h3>
+        <p class="text-sm font-semibold text-amber-600 dark:text-amber-400 mb-6">${proj.org}</p>
+
+        <div class="space-y-4 text-sm">
+          <div class="p-4 rounded-2xl bg-slate-900/5 dark:bg-white/5">
+            <h4 class="font-mono uppercase text-xs text-amber-500 font-bold mb-1">1. Context & Challenge</h4>
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">${proj.problem}</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-slate-900/5 dark:bg-white/5">
+            <h4 class="font-mono uppercase text-xs text-amber-500 font-bold mb-1">2. Strategic Action & Media Execution</h4>
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">${proj.solution}</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30">
+            <h4 class="font-mono uppercase text-xs text-emerald-500 font-bold mb-1">3. Measurable Impact & Outcome</h4>
+            <p class="text-slate-700 dark:text-slate-200 leading-relaxed font-medium">${proj.outcome}</p>
+          </div>
+        </div>
+      `;
+      document.getElementById('project-modal').classList.remove('hidden');
+    }
+
+    function closeProjectModal() {
+      document.getElementById('project-modal').classList.add('hidden');
+    }
+
+    /* -----------------------------------------------------------
+       5. GALLERY RENDERING & SMART PHOTO SYNC
+       ----------------------------------------------------------- */
+    function renderGallery(filter = 'all') {
+      const grid = document.getElementById('gallery-grid');
+      const items = filter === 'all'
+        ? portfolioPhotos
+        : portfolioPhotos.filter(p => p.category === filter);
+
+      grid.innerHTML = items.map(photo => {
+        const srcUrl = loadedPhotosMap[photo.id] || photo.id;
+        const isAlreadyLoaded = Boolean(loadedPhotosMap[photo.id]);
+        return `
+          <div class="theme-card rounded-2xl overflow-hidden flex flex-col justify-between group">
+            <div class="relative aspect-[4/3] w-full bg-slate-900 overflow-hidden">
+              <img
+                src="${srcUrl}"
+                alt="${photo.title}"
+                data-photo-id="${photo.id}"
+                onload="markPhotoLoaded('${photo.id}')"
+                onerror="showPhotoFallback(this, '${photo.id}')"
+                class="w-full h-full object-cover transition duration-500 group-hover:scale-105 cursor-pointer"
+                onclick="openLightbox('${photo.id}')"
+              />
+              <!-- Fallback card when local image isn't mounted yet -->
+              <div id="gal-fallback-${photo.id}" class="${isAlreadyLoaded ? 'hidden' : 'hidden'} absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 p-5 flex flex-col items-center justify-center text-center text-white">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center text-xl mb-2.5">
+                  <i class="fa-solid ${photo.icon}"></i>
+                </div>
+                <span class="font-mono text-[11px] text-amber-300 bg-white/10 px-2 py-0.5 rounded mb-1">${photo.id}</span>
+                <h4 class="font-bold text-sm mb-1">${photo.title}</h4>
+                <p class="text-[11px] text-slate-300 line-clamp-2 mb-3">${photo.caption}</p>
+                <button onclick="triggerSinglePhotoLoad('${photo.id}')" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition">
+                  <i class="fa-solid fa-folder-open mr-1"></i> Load ${photo.id}
+                </button>
+              </div>
+
+              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-slate-950/75 backdrop-blur-sm text-amber-400 font-mono text-[11px]">
+                ${photo.tag}
+              </div>
+              <button onclick="openLightbox('${photo.id}')" class="absolute top-3 right-3 w-8 h-8 rounded-lg bg-slate-950/75 text-white hover:bg-amber-500 hover:text-slate-950 transition flex items-center justify-center" title="View Fullscreen">
+                <i class="fa-solid fa-expand text-xs"></i>
+              </button>
+            </div>
+
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400 mb-1">
+                  <span>${photo.date}</span>
+                  <span>${photo.id}</span>
+                </div>
+                <h3 class="font-serif font-bold text-lg mb-1.5">${photo.title}</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                  ${photo.caption}
+                </p>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterGallery(category) {
+      document.querySelectorAll('.gal-filter-btn').forEach(btn => {
+        if (btn.dataset.gfilter === category) {
+          btn.className = 'gal-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-amber-500 text-slate-950 transition';
+        } else {
+          btn.className = 'gal-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold theme-card hover:border-amber-500 transition';
+        }
+      });
+      renderGallery(category);
+    }
+
+    // Called when an <img> successfully loads its image
+    function markPhotoLoaded(photoId) {
+      if (!loadedPhotosMap[photoId]) {
+        loadedPhotosMap[photoId] = photoId;
+      }
+      const heroFallback = document.getElementById(`fallback-${photoId}`);
+      if (heroFallback) heroFallback.classList.add('hidden');
+      const galFallback = document.getElementById(`gal-fallback-${photoId}`);
+      if (galFallback) galFallback.classList.add('hidden');
+      updatePhotoCounterUI();
+    }
+
+    // Called if the browser cannot find the local file in the sandbox yet
+    function showPhotoFallback(imgElement, photoId) {
+      const heroFallback = document.getElementById(`fallback-${photoId}`);
+      if (heroFallback) heroFallback.classList.remove('hidden');
+      const galFallback = document.getElementById(`gal-fallback-${photoId}`);
+      if (galFallback) galFallback.classList.remove('hidden');
+    }
+
+    function updatePhotoCounterUI() {
+      const count = Object.keys(loadedPhotosMap).length;
+      const statusBadge = document.getElementById('photo-load-status');
+      const navCounter = document.getElementById('nav-photo-counter');
+      if (count > 0) {
+        statusBadge.classList.remove('hidden');
+        statusBadge.textContent = `${count}/6 Photos Active`;
+        if (navCounter) navCounter.textContent = `Photos (${count}/6)`;
+      }
+    }
+
+    // Batch File Loader: matches by filename or fills slots in order
+    function triggerBatchPhotoLoad() {
+      document.getElementById('batch-photo-input').click();
+    }
+
+    function triggerSinglePhotoLoad(photoId) {
+      activeSingleSlotTarget = photoId;
+      document.getElementById('single-photo-input').click();
+    }
+
+    document.getElementById('batch-photo-input').addEventListener('change', function(e) {
+      const files = Array.from(e.target.files || []);
+      if (!files.length) return;
+
+      const unmatchedFiles = [];
+
+      // First pass: exact or case-insensitive filename match
+      files.forEach(file => {
+        const cleanName = file.name.trim().toLowerCase();
+        const matchedSlot = portfolioPhotos.find(p => p.id.toLowerCase() === cleanName || cleanName.includes(p.id.split('.')[0].toLowerCase()));
+        if (matchedSlot) {
+          const blobUrl = URL.createObjectURL(file);
+          applyPhotoToSlot(matchedSlot.id, blobUrl);
+        } else {
+          unmatchedFiles.push(file);
+        }
+      });
+
+      // Second pass: if user selected renamed files, assign them to remaining empty slots
+      unmatchedFiles.forEach(file => {
+        const emptySlot = portfolioPhotos.find(p => !loadedPhotosMap[p.id]);
+        if (emptySlot) {
+          const blobUrl = URL.createObjectURL(file);
+          applyPhotoToSlot(emptySlot.id, blobUrl);
+        }
+      });
+
+      showToast(`Loaded ${Object.keys(loadedPhotosMap).length} portfolio photo(s) into live preview!`);
+    });
+
+    document.getElementById('single-photo-input').addEventListener('change', function(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file || !activeSingleSlotTarget) return;
+      const blobUrl = URL.createObjectURL(file);
+      applyPhotoToSlot(activeSingleSlotTarget, blobUrl);
+      showToast(`Updated ${activeSingleSlotTarget} in live preview!`);
+    });
+
+    function applyPhotoToSlot(photoId, blobUrl) {
+      loadedPhotosMap[photoId] = blobUrl;
+      document.querySelectorAll(`img[data-photo-id="${photoId}"]`).forEach(img => {
+        img.src = blobUrl;
+      });
+      markPhotoLoaded(photoId);
+    }
+
+    /* -----------------------------------------------------------
+       6. LIGHTBOX VIEWER
+       ----------------------------------------------------------- */
+    function openLightbox(photoId) {
+      const photo = portfolioPhotos.find(p => p.id === photoId);
+      if (!photo) return;
+
+      const modal = document.getElementById('lightbox-modal');
+      const img = document.getElementById('lightbox-img');
+      const fallback = document.getElementById('lightbox-fallback');
+
+      document.getElementById('lightbox-tag').textContent = `${photo.tag} • ${photo.date}`;
+      document.getElementById('lightbox-title').textContent = photo.title;
+      document.getElementById('lightbox-caption').textContent = photo.caption;
+      document.getElementById('lightbox-filename').textContent = `File: ${photo.id}`;
+
+      if (loadedPhotosMap[photoId]) {
+        img.src = loadedPhotosMap[photoId];
+        img.classList.remove('hidden');
+        fallback.classList.add('hidden');
+      } else {
+        img.src = photo.id;
+        img.onload = () => {
+          img.classList.remove('hidden');
+          fallback.classList.add('hidden');
+        };
+        img.onerror = () => {
+          img.classList.add('hidden');
+          fallback.classList.remove('hidden');
+          document.getElementById('lightbox-fallback-text').textContent = `Select "${photo.id}" from your computer to view it in high resolution.`;
+          document.getElementById('lightbox-load-btn').onclick = () => {
+            closeLightbox();
+            triggerSinglePhotoLoad(photo.id);
+          };
+        };
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox-modal').classList.add('hidden');
+    }
+
+    /* -----------------------------------------------------------
+       7. CERTIFICATIONS VAULT RENDERING
+       ----------------------------------------------------------- */
+    function renderCerts(filter = 'all') {
+      const grid = document.getElementById('certs-grid');
+      const items = filter === 'all'
+        ? certificationsData
+        : certificationsData.filter(c => c.category === filter);
+
+      grid.innerHTML = items.map(cert => `
+        <div class="theme-card rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-500 flex items-center justify-center text-base">
+                <i class="fa-solid ${cert.icon}"></i>
+              </div>
+              <span class="px-2.5 py-1 rounded-md bg-slate-900/5 dark:bg-white/5 font-mono text-xs text-amber-600 dark:text-amber-400 font-semibold">
+                ${cert.date}
+              </span>
+            </div>
+            <h3 class="font-serif font-bold text-lg mb-1 leading-snug">${cert.title}</h3>
+            <p class="text-xs font-semibold text-amber-600 dark:text-amber-400 mb-3">${cert.issuer}</p>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">${cert.desc}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterCerts(category) {
+      document.querySelectorAll('.cert-filter-btn').forEach(btn => {
+        if (btn.dataset.cfilter === category) {
+          btn.className = 'cert-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold bg-amber-500 text-slate-950 transition';
+        } else {
+          btn.className = 'cert-filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold theme-card hover:border-amber-500 transition';
+        }
+      });
+      renderCerts(category);
+    }
+
+    /* -----------------------------------------------------------
+       8. THEME TOGGLE, MODALS & CONTACT HELPERS
+       ----------------------------------------------------------- */
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.classList.toggle('dark');
+      const icon = document.getElementById('theme-icon');
+      const label = document.getElementById('theme-label');
+
+      if (isDark) {
+        icon.className = 'fa-solid fa-sun text-amber-400 text-sm';
+        label.textContent = 'Cinematic Dark';
+      } else {
+        icon.className = 'fa-solid fa-moon text-crimsonAccent text-sm';
+        label.textContent = 'Editorial Light';
+      }
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    function openCvModal() {
+      document.getElementById('cv-modal').classList.remove('hidden');
+    }
+
+    function closeCvModal() {
+      document.getElementById('cv-modal').classList.add('hidden');
+    }
+
+    function copyText(text, message) {
+      const tempInput = document.createElement('textarea');
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      showToast(message);
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').textContent = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 3500);
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('sender-name').value.trim();
+      const org = document.getElementById('sender-org').value.trim();
+      const topic = document.getElementById('sender-topic').value;
+      const message = document.getElementById('sender-message').value.trim();
+
+      const subject = encodeURIComponent(`[Portfolio Inquiry] ${topic} — from ${name}`);
+      const body = encodeURIComponent(`Hello Rafin,\n\n${message}\n\nBest regards,\n${name}${org ? '\n' + org : ''}`);
+      window.location.href = `mailto:imranhasanrafin@gmail.com?subject=${subject}&body=${body}`;
+      showToast('Opening your email client...');
+    }
+
+    function sendViaWhatsApp() {
+      const name = document.getElementById('sender-name').value.trim() || 'A Visitor';
+      const org = document.getElementById('sender-org').value.trim();
+      const topic = document.getElementById('sender-topic').value;
+      const message = document.getElementById('sender-message').value.trim() || 'Hi Rafin, I viewed your portfolio website and would love to connect.';
+
+      const text = encodeURIComponent(`Assalamu Alaikum Rafin,\n\n*Name:* ${name}${org ? ' (' + org + ')' : ''}\n*Topic:* ${topic}\n\n${message}`);
+      window.open(`https://wa.me/8801715527634?text=${text}`, '_blank');
+    }
+
+    // Close modals on Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeProjectModal();
+        closeLightbox();
+        closeCvModal();
+      }
+    });
+
+    // Initialize Portfolio on Load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderProjects('all');
+      renderGallery('all');
+      renderCerts('all');
+    });
+  </script>
+</body>
+</html>
